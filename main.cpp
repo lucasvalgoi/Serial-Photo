@@ -312,6 +312,7 @@ int main() {
     };
 
     int tempoEsperaMs = 2000;//2 segundos por imagem
+    int tempoApagadoMs = 1000;//1 segundo apagado
     int cuboDestino = 0;
 
     cout << "Iniciando exibicao automatica..." << endl;
@@ -346,6 +347,13 @@ int main() {
 
             Sleep(tempoEsperaMs);
         }
+        //todas as imagens foram exibidas, apaga e fica um tempo assim até voltar
+        cout << "\nApagando o display por " << (tempoApagadoMs / 1000) << " segundos..." << endl;
+
+        if (ApagarDisplaySerial(hCom)) {
+            cout << "[CLR] Display limpo com sucesso." << endl;
+        }
+        Sleep(tempoApagadoMs);
     }
 
     CloseHandle(hCom);
